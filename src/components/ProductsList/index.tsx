@@ -1,4 +1,5 @@
-import Game from '../../models/Game'
+import { Game } from '../../pages/Home'
+import { formatPrice } from '../../utils/formatPrice'
 import Product from '../Product'
 import * as S from './styles'
 
@@ -8,26 +9,44 @@ export type Props = {
   games: Game[]
 }
 
-const ProductsList = ({ background, sectionTitle, games }: Props) => (
-  <S.ProductsSection background={background}>
-    <div className="container">
-      <S.SectionTitle>{sectionTitle}</S.SectionTitle>
-      <S.ProductsList>
-        {games.map((game) => (
-          <Product
-            key={game.id}
-            gameId={game.id}
-            gameCategory={game.category}
-            gameImage={game.image}
-            gameSystem={game.system}
-            gameTitle={game.title}
-            gameDescription={game.description}
-            infos={game.infos}
-          />
-        ))}
-      </S.ProductsList>
-    </div>
-  </S.ProductsSection>
-)
+const ProductsList = ({ background, sectionTitle, games }: Props) => {
+  const getGameTags = (game: Game) => {
+    const tags = []
 
+    if (game.release_date) {
+      tags.push(game.release_date)
+    }
+    if (game.prices.discount) {
+      tags.push(`${game.prices.discount}%`)
+    }
+    if (game.prices.current) {
+      tags.push(formatPrice(game.prices.current))
+    }
+
+    return tags
+  }
+
+  return (
+    <S.ProductsSection background={background}>
+      <div className="container">
+        <S.SectionTitle>{sectionTitle}</S.SectionTitle>
+        <S.ProductsList>
+          {games?.map((game) => (
+            <li key={game.id}>
+              <Product
+                gameId={game.id}
+                gameCategory={game.details.category}
+                gameImage={game.media.thumbnail}
+                gameSystem={game.details.system}
+                gameTitle={game.name}
+                gameDescription={game.description}
+                infos={getGameTags(game)}
+              />
+            </li>
+          ))}
+        </S.ProductsList>
+      </div>
+    </S.ProductsSection>
+  )
+}
 export default ProductsList
