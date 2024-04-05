@@ -4,6 +4,7 @@ import Header from './components/Header'
 import { GlobalStyle } from './styles'
 import PagesRoutes from './routes'
 import Footer from './components/Footer'
+import Cart from './components/Cart'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       </div>
       <PagesRoutes />
       <Footer />
+      <Cart />
     </BrowserRouter>
   )
 }

@@ -15,6 +15,7 @@ export const ButtonContainer = styled.button<Props>`
   font-size: 16px;
   font-weight: bold;
   border-radius: 8px;
+  cursor: pointer;
 `
 export const ButtonLink = styled(Link)`
   padding: 8px 16px;
@@ -25,4 +26,5 @@ export const ButtonLink = styled(Link)`
   font-weight: bold;
   border-radius: 8px;
   text-decoration: none;
+  cursor: pointer;
 `

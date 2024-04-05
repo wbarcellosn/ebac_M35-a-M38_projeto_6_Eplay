@@ -1,3 +1,4 @@
+import { table } from 'console'
 import { createGlobalStyle } from 'styled-components'
 
 export const colors = {
@@ -6,6 +7,11 @@ export const colors = {
   lightGray: '#A3A3A3',
   black: '#111',
   white: '#eee'
+}
+
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px'
 }
 
 export const GlobalStyle = createGlobalStyle`
@@ -29,5 +35,9 @@ body {
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
+
+  @media (max-width:${breakpoints.desktop}){
+    max-width: 80%;
+  }
 }
 `

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import { Props } from '.'
 import { Card } from '../Product/styles'
 
@@ -24,4 +24,12 @@ export const ProductsList = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+  }
 `

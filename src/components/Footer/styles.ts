@@ -1,3 +1,4 @@
+import { HashLink } from 'react-router-hash-link'
 import styled from 'styled-components'
 import { colors } from '../../styles'
 
@@ -18,9 +19,13 @@ export const FooterLinks = styled.ul`
   margin-top: 16px;
   display: flex;
 `
-export const Link = styled.a`
+export const Link = styled(HashLink)`
   margin-right: 8px;
   color: ${colors.lightGray};
   text-decoration: none;
   cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `
