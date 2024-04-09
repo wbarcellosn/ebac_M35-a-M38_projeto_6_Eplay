@@ -1,15 +1,14 @@
 import { useState } from 'react'
+
 import Section from '../Section'
-import { GalleryItem } from '../../pages/Home'
-import spiderman from '../../assets/images/banner-homem-aranha.png'
-import howgwarts from '../../assets/images/fundo_hogwarts.png'
+
 import play from '../../assets/images/play.png'
 import zoom from '../../assets/images/zoom.png'
-import closebtn from '../../assets/images/fechar.png'
-import { Action, Item, Items, Modal, ModalContent } from './styles'
+import closeIcon from '../../assets/images/fechar.png'
+
+import * as S from './styles'
 
 //Types
-
 interface ModalState extends GalleryItem {
   isVisible: boolean
 }
@@ -50,32 +49,28 @@ const Gallery = ({ defaultCover, gameName, galleryItems }: Props) => {
   return (
     <>
       <Section background="black" title="Galeria">
-        <Items>
+        <S.Items>
           {galleryItems.map((media, index) => (
-            <Item key={index} onClick={() => openModal(media)}>
+            <S.Item key={index} onClick={() => openModal(media)}>
               <img
                 src={getMediaCover(media)}
                 alt={`Mídia ${index + 1} de ${gameName}`}
               />
-              <Action>
+              <S.Action>
                 <img
                   src={getMediaIcon(media)}
                   alt="Clique aqui para maximizar a mídia"
                 />
-              </Action>
-            </Item>
+              </S.Action>
+            </S.Item>
           ))}
-        </Items>
+        </S.Items>
       </Section>
-      <Modal className={modal.isVisible ? 'visible' : ''}>
-        <ModalContent className="container">
+      <S.Modal className={modal.isVisible ? 'is-visible' : ''}>
+        <S.ModalContent className="container">
           <header>
             <h4>{gameName}</h4>
-            <img
-              src={closebtn}
-              alt="ícone de fechar"
-              onClick={() => closeModal()}
-            />
+            <img src={closeIcon} alt="ícone de fechar" onClick={closeModal} />
           </header>
 
           {modal.type === 'image' ? (
@@ -83,9 +78,9 @@ const Gallery = ({ defaultCover, gameName, galleryItems }: Props) => {
           ) : (
             <iframe src={modal.url}></iframe>
           )}
-        </ModalContent>
-        <div className="overlay" onClick={() => closeModal()}></div>
-      </Modal>
+        </S.ModalContent>
+        <div className="overlay" onClick={closeModal}></div>
+      </S.Modal>
     </>
   )
 }

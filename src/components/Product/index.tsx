@@ -1,4 +1,5 @@
 import Tag from '../Tag'
+
 import * as S from './styles'
 
 type Props = {
@@ -20,15 +21,18 @@ const Product = ({
   gameDescription,
   infos
 }: Props) => {
-  const getDescription = (description: string) => {
-    if (description.length > 92) {
-      return description.slice(0, 92) + '...'
+  const getDescription = (text: string) => {
+    if (text.length > 92) {
+      return text.slice(0, 92) + '...'
     }
 
-    return description
+    return text
   }
   return (
-    <S.Card to={`/product/${gameId}`}>
+    <S.Card
+      to={`/product/${gameId}`}
+      title={`Clique aqui para ver mais detalhes do jogo ${gameTitle}`}
+    >
       <img src={gameImage} alt={gameTitle} />
       <S.Infos>
         {infos.map((info) => (

@@ -1,15 +1,15 @@
 import Button from '../Button'
 import Tag from '../Tag'
-import * as S from './styles'
-import { formatPrice } from '../../utils/formatPrice'
-
+import Loader from '../Loader'
+import { parseToBrl } from '../../utils'
 import { useGetFeaturedGameQuery } from '../../services/api'
+import * as S from './styles'
 
 const Banner = () => {
-  const { data: game, isLoading } = useGetFeaturedGameQuery()
+  const { data: game } = useGetFeaturedGameQuery()
 
   if (!game) {
-    return <h3>Carregando...</h3>
+    return <Loader />
   }
 
   return (
@@ -20,9 +20,9 @@ const Banner = () => {
           <S.BannerTitle>{game.name}</S.BannerTitle>
           <S.BannerPrices>
             {game.prices.discount && (
-              <span>De {formatPrice(game.prices.old)}</span>
+              <span>De {parseToBrl(game.prices.old)}</span>
             )}
-            Por apenas {formatPrice(game.prices.current)}
+            Por apenas {parseToBrl(game.prices.current)}
           </S.BannerPrices>
         </div>
         <Button

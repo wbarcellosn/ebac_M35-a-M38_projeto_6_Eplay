@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 import { ButtonContainer } from '../Button/styles'
-import closeBtn from '../../assets/images/fechar.png'
+import closeIcon from '../../assets/images/fechar.png'
 
 export const CartContainer = styled.div`
   position: fixed;
@@ -58,7 +58,7 @@ export const CartItem = styled.li`
   }
 
   button {
-    background-image: url(${closeBtn});
+    background-image: url(${closeIcon});
     background-color: transparent;
     height: 16px;
     width: 16px;
@@ -79,6 +79,13 @@ export const Sidebar = styled.aside`
   ${ButtonContainer} {
     max-width: 100%;
     width: 100%;
+  }
+
+  .empty-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${colors.white};
+    text-align: center;
   }
 `
 export const Quantity = styled.p`

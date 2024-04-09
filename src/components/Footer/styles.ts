@@ -4,6 +4,7 @@ import { colors } from '../../styles'
 
 export const FooterContainer = styled.footer`
   padding: 32px 0;
+  margin-top: 40px;
   background-color: ${colors.grey};
   font-size: 14px;
 `

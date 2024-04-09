@@ -23,6 +23,7 @@ export const Action = styled.div`
 
 export const Item = styled.li`
   position: relative;
+  cursor: pointer;
 
   > img {
     width: 150px;
@@ -34,7 +35,6 @@ export const Item = styled.li`
 
   &:hover {
     ${Action} {
-      cursor: pointer;
       opacity: 1;
       transition: opacity 0.5s ease;
     }
@@ -60,7 +60,7 @@ export const Modal = styled.div`
     background-color: rgba(0, 0, 0, 0.73);
   }
 
-  &.visible {
+  &.is-visible {
     display: flex;
   }
 `
